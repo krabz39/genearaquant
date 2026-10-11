@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d35">
+  <meta name="description" content="GENEARA PAY — transparent Kenya to Kuwait transfer estimates.">
+  <title>GENEARA PAY | Kenya to Kuwait</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --navy: #101d35;
+      --navy2: #172945;
+      --navy3: #243957;
+      --cream: #f7f1e7;
+      --beige: #e9dcc8;
+      --sand: #d6c1a0;
+      --gold: #bd985e;
+      --gold-light: #ddc8a8;
+      --ink: #172338;
+      --muted: #738096;
+      --line: #e7eaf0;
+      --white: #fff;
+      --green: #26795c;
+      --red: #a53c3c;
+      --shadow: 0 22px 65px rgba(16,29,53,.10);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #fcfbf8;
+      color: var(--ink);
+      font-family: "DM Sans", system-ui, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1160px, 100%); margin: 0 auto; padding-inline: 24px; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+      border: 0;
+    }
+
+    .topbar { background: var(--navy); color: #e9e2d7; font-size: 12px; }
+    .topbar-inner {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding-block: 9px; flex-wrap: wrap;
+    }
+    .topbar strong { color: #fff; }
+
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #eee9e1;
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+    .brand-mark {
+      width: 42px; height: 42px; flex: 0 0 42px;
+      border-radius: 13px; display: grid; place-items: center;
+      color: var(--cream); background: var(--navy);
+      font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800;
+      box-shadow: inset 0 0 0 1px rgba(214,193,160,.5);
+    }
+    .brand-name {
+      font-family: Manrope, sans-serif; font-size: 16px;
+      letter-spacing: 1.2px; font-weight: 800; color: var(--navy); line-height: 1.15;
+    }
+    .brand-sub {
+      font-size: 9px; color: #8a7964; letter-spacing: 2px;
+      font-weight: 800; margin-top: 4px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 25px;
+      color: #5c6677; font-size: 12px; font-weight: 700;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      border: 1px solid #d9c8ad; border-radius: 11px;
+      padding: 10px 14px; color: var(--navy);
+      background: var(--cream); white-space: nowrap;
+    }
+
+    .hero {
+      position: relative; overflow: hidden; background: var(--navy); color: white;
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border: 1px solid rgba(214,193,160,.13);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::before { width: 640px; height: 640px; right: -170px; top: -360px; }
+    .hero::after { width: 460px; height: 460px; right: -80px; top: -270px; }
+    .hero-inner {
+      display: grid; grid-template-columns: minmax(0,1fr) minmax(340px,440px);
+      align-items: center; gap: 58px; padding-block: 68px 76px;
+      position: relative; z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--gold-light); text-transform: uppercase;
+      letter-spacing: 2px; font-size: 10px; font-weight: 800;
+    }
+    .eyebrow-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #d5b77e; box-shadow: 0 0 0 4px rgba(213,183,126,.13);
+    }
+    h1 {
+      font-family: Manrope, sans-serif; font-size: clamp(38px,5vw,60px);
+      line-height: 1.08; letter-spacing: -2.5px;
+      margin: 20px 0; max-width: 600px;
+    }
+    h1 em { color: #ddc8a8; font-style: normal; }
+    .hero-copy { max-width: 490px; color: #c6cfda; font-size: 14px; line-height: 1.9; margin: 0 0 27px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 13px 18px; color: #d9e0e8; font-size: 11px; }
+    .trust-row span, .security-items span { display: flex; align-items: center; gap: 7px; }
+    .check {
+      display: inline-grid; place-items: center; flex: 0 0 17px;
+      width: 17px; height: 17px; border-radius: 50%;
+      background: rgba(214,193,160,.17); color: #e6d1af; font-size: 11px;
+    }
+
+    .calculator {
+      min-width: 0; background: #fff; border-radius: 24px;
+      padding: 26px; color: var(--ink);
+      box-shadow: 0 28px 80px rgba(0,0,0,.2);
+      border: 1px solid rgba(255,255,255,.5);
+    }
+    .calc-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 12px; margin-bottom: 23px;
+    }
+    .calc-head h2 { font-size: 19px; margin: 0 0 5px; letter-spacing: -.5px; color: var(--navy); }
+    .calc-head p { margin: 0; font-size: 11px; color: var(--muted); }
+    .live-pill {
+      background: #f2f4f7; color: #596579; border-radius: 20px;
+      padding: 6px 9px; font-size: 9px; font-weight: 800;
+      white-space: nowrap; text-align: center;
+    }
+    .live-pill.ready { background: #edf7f0; color: #26724b; }
+    .live-pill.error { background: #fff0f0; color: #a53c3c; }
+    .field-label {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 10px; margin: 0 0 8px; font-size: 11px;
+      font-weight: 750; color: #647084;
+    }
+    .field-label span:last-child { text-align: right; }
+    .currency-field {
+      display: flex; align-items: center; gap: 12px; min-width: 0;
+      border: 1px solid #e2e6ec; border-radius: 14px;
+      padding: 13px 14px; transition: border .2s, box-shadow .2s;
+    }
+    .currency-field:focus-within {
+      border-color: #b99b6b; box-shadow: 0 0 0 3px rgba(189,152,94,.12);
+    }
+    .currency-code {
+      display: flex; align-items: center; gap: 9px;
+      min-width: 100px; flex-shrink: 0;
+      border-right: 1px solid #e8ebf0; padding-right: 12px;
+    }
+    .flag { font-size: 21px; }
+    .currency-code strong { display: block; font-size: 13px; color: var(--navy); }
+    .currency-code small { display: block; font-size: 9px; color: #8b95a4; margin-top: 1px; }
+    .currency-field input {
+      border: 0; outline: 0; width: 100%; min-width: 0;
+      text-align: right; font-size: 22px; font-weight: 800;
+      color: var(--navy); background: transparent;
+    }
+    .currency-field input[readonly] { color: #667286; }
+    .swap-line {
+      display: flex; align-items: center; gap: 12px; margin: 12px 0;
+      color: #8993a2; font-size: 10px;
+    }
+    .swap-line::before, .swap-line::after { content: ""; height: 1px; background: #edf0f3; flex: 1; }
+    .rate-line {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 10px; margin: 15px 0 19px; font-size: 11px; color: #6f7b8c;
+    }
+    .rate-value { color: var(--navy); font-weight: 750; text-align: right; overflow-wrap: anywhere; }
+    .fee-box { background: #faf7f1; border: 1px solid #eee4d5; border-radius: 14px; padding: 14px 15px; }
+    .fee-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 12px; font-size: 11px; color: #707b8b; margin: 5px 0;
+    }
+    .fee-row strong { color: var(--navy); font-size: 12px; text-align: right; overflow-wrap: anywhere; }
+    .fee-row.total { border-top: 1px solid #e8ddcb; margin-top: 11px; padding-top: 12px; color: var(--navy); font-weight: 800; }
+    .fee-row.total strong { font-size: 16px; }
+    .receive-box {
+      margin-top: 15px; padding: 17px; background: var(--navy); color: #fff;
+      border-radius: 15px; display: flex; justify-content: space-between;
+      align-items: center; gap: 12px;
+    }
+    .receive-box span { display: block; color: #c2cbd7; font-size: 10px; }
+    .receive-box small { display: block; color: #d9c6a6; font-size: 9px; margin-top: 4px; }
+    .receive-amount { font-size: 25px; letter-spacing: -.8px; font-weight: 800; text-align: right; overflow-wrap: anywhere; }
+    .primary-btn {
+      border: 0; border-radius: 13px; width: 100%; margin-top: 17px;
+      padding: 15px 18px; min-height: 49px; background: var(--gold);
+      color: #171f2d; font-weight: 800; font-size: 13px;
+      transition: background .2s, transform .2s;
+    }
+    .primary-btn:hover:not(:disabled) { background: #cbaa71; transform: translateY(-1px); }
+    .primary-btn:disabled { opacity: .5; }
+    .primary-btn:focus-visible, .nav-cta:focus-visible, input:focus-visible, .close-btn:focus-visible {
+      outline: 3px solid #d6b87f; outline-offset: 2px;
+    }
+    .fine-print { text-align: center; color: #858e9c; font-size: 10px; margin: 12px 4px 0; line-height: 1.7; overflow-wrap: anywhere; }
+    .updated-at { font-size: 10px; color: #7a8595; text-align: center; margin-top: 7px; }
+
+    .section { padding-block: 74px; }
+    .section-kicker { color: #9c7c4e; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; text-align: center; }
+    .section h2 { text-align: center; color: var(--navy); font-family: Manrope, sans-serif; font-size: clamp(26px,3vw,36px); letter-spacing: -1.2px; margin: 12px 0 10px; }
+    .section-intro { text-align: center; max-width: 590px; margin: 0 auto 38px; color: #758093; font-size: 13px; line-height: 1.8; }
+    .steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
+    .step { border: 1px solid #eee8de; background: #fff; border-radius: 18px; padding: 24px; }
+    .step-number { width: 39px; height: 39px; border-radius: 12px; background: var(--cream); color: #8c6b3e; display: grid; place-items: center; font-weight: 800; font-size: 12px; margin-bottom: 17px; }
+    .step h3 { font-size: 15px; margin: 0 0 8px; color: var(--navy); }
+    .step p { font-size: 12px; line-height: 1.8; color: #7b8595; margin: 0; }
+    .security-band { background: var(--cream); border-top: 1px solid #eee4d5; border-bottom: 1px solid #eee4d5; }
+    .security-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 28px; }
+    .security-copy strong { color: var(--navy); font-size: 13px; display: block; }
+    .security-copy span { color: #7b7a77; font-size: 11px; }
+    .security-items { display: flex; flex-wrap: wrap; gap: 14px 22px; color: #5f6a78; font-size: 11px; font-weight: 650; }
+    footer { background: #0c172b; color: #d8dee7; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-block: 35px 25px; }
+    .footer-brand { color: #fff; font-weight: 800; letter-spacing: 1.6px; font-size: 14px; }
+    .footer-note { font-size: 10px; color: #a9b2c0; margin-top: 5px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 10px; color: #c5ccd7; }
+    .copyright { border-top: 1px solid rgba(255,255,255,.1); padding: 15px 24px; text-align: center; color: #8e9aac; font-size: 10px; }
+
+    .modal-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(7,15,29,.68);
+      z-index: 100; padding: 16px; align-items: center; justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: #fff; width: min(100%,470px); border-radius: 22px;
+      padding: 26px; max-height: calc(100dvh - 32px); overflow-y: auto;
+      box-shadow: 0 25px 90px rgba(0,0,0,.25);
+    }
+    .modal-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; margin-bottom: 20px; }
+    .modal-top h2 { margin: 0 0 5px; font-size: 21px; color: var(--navy); }
+    .modal-top p { margin: 0; font-size: 11px; color: #7a8595; }
+    .close-btn { flex: 0 0 36px; border: 0; background: #f3f4f6; border-radius: 10px; width: 36px; height: 36px; font-size: 22px; color: #5f6876; }
+    .form-group { margin: 15px 0; }
+    .form-group label { display: block; color: #5e697a; font-size: 11px; font-weight: 750; margin-bottom: 7px; }
+    .form-group input { width: 100%; border: 1px solid #dfe4eb; border-radius: 11px; padding: 13px; outline: 0; color: var(--navy); background: #fff; }
+    .form-group input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(189,152,94,.12); }
+    .quote-summary { background: #f8f5ef; border: 1px solid #eee3d3; border-radius: 13px; padding: 14px; margin: 18px 0; }
+    .quote-summary div { display: flex; justify-content: space-between; gap: 12px; margin: 7px 0; font-size: 11px; color: #707b8b; }
+    .quote-summary strong { color: var(--navy); text-align: right; }
+    .notice { border-radius: 12px; padding: 12px; font-size: 11px; line-height: 1.7; background: #fff7e8; color: #7b5a25; border: 1px solid #f0dfbf; margin-top: 13px; }
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translate(-50%,20px);
+      opacity: 0; pointer-events: none; z-index: 120; background: var(--navy);
+      color: white; border: 1px solid rgba(214,193,160,.35); border-radius: 12px;
+      padding: 13px 18px; box-shadow: var(--shadow); font-size: 12px;
+      transition: all .25s; width: max-content; max-width: calc(100% - 32px);
+    }
+    .toast.show { opacity: 1; transform: translate(-50%,0); }
+
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: minmax(0,1fr) minmax(320px,410px); gap: 28px; padding-block: 52px 58px; }
+      .nav-links { gap: 14px; }
+      .hero-copy { font-size: 13px; }
+      .calculator { padding: 22px; }
+    }
+    @media (max-width: 760px) {
+      .container { padding-inline: 17px; }
+      .nav { min-height: 68px; flex-wrap: wrap; padding-block: 12px; }
+      .nav-links { gap: 10px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-cta { padding: 9px 11px; font-size: 11px; }
+      .hero-inner { grid-template-columns: minmax(0,1fr); padding-block: 43px 45px; gap: 30px; }
+      h1 { font-size: clamp(38px,10vw,53px); letter-spacing: -1.8px; }
+      .hero-copy { max-width: 560px; }
+      .calculator { width: 100%; max-width: 500px; margin: auto; padding: 22px; }
+      .section { padding-block: 56px; }
+      .steps { grid-template-columns: minmax(0,1fr); }
+      .step { padding: 20px; }
+      .security-inner { align-items: flex-start; flex-direction: column; padding-block: 25px; }
+      .security-items { gap: 12px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; padding-block: 30px; }
+    }
+    @media (max-width: 380px) {
+      .brand-name { font-size: 14px; letter-spacing: .8px; }
+      .brand-sub { letter-spacing: 1.5px; font-size: 8px; }
+      .brand-mark { width: 38px; height: 38px; flex-basis: 38px; }
+      .calculator { padding: 16px; border-radius: 18px; }
+      .currency-code { min-width: 78px; gap: 6px; padding-right: 8px; }
+      .currency-field { padding: 11px 9px; gap: 8px; }
+      .currency-field input { font-size: 18px; }
+      .receive-amount { font-size: 21px; }
+      .calc-head h2 { font-size: 16px; }
+      .live-pill { white-space: normal; }
+      .modal { padding: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>KENYA <strong>🇰🇪</strong> &nbsp; → &nbsp; KUWAIT <strong>🇰🇼</strong></span>
+      <span>Cross-border transfer estimates</span>
+    </div>
+  </div>
+
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="GENEARA PAY home">
+        <div class="brand-mark">G</div>
+        <div>
+          <div class="brand-name">GENEARA PAY</div>
+          <div class="brand-sub">KENYA TO KUWAIT</div>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#security">Our approach</a>
+        <a href="#calculator">Exchange</a>
+        <a class="nav-cta" href="#calculator">Calculate transfer ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A simpler way to exchange</div>
+          <h1>Kenya to Kuwait.<br><em>Made simple.</em></h1>
+          <p class="hero-copy">
+            Check your transfer estimate before proceeding. Enter Kenyan shillings,
+            review the exchange rate and disclosed fees, and see your estimated
+            Kuwaiti dinar payout.
+          </p>
+          <div class="trust-row">
+            <span><i class="check">✓</i> Pricing shown upfront</span>
+            <span><i class="check">✓</i> M-Pesa payment flow</span>
+            <span><i class="check">✓</i> Clear transaction status</span>
+          </div>
+        </div>
+
+        <section class="calculator" id="calculator" aria-labelledby="calc-title">
+          <div class="calc-head">
+            <div>
+              <h2 id="calc-title">Exchange calculator</h2>
+              <p>Check your estimated KWD payout</p>
+            </div>
+            <span class="live-pill" id="pricingStatus" role="status" aria-live="polite">CONNECTING</span>
+          </div>
+
+          <label class="field-label" for="kesAmount">
+            <span>You send</span><span>Amount in Kenyan shillings</span>
+          </label>
+          <div class="currency-field">
+            <div class="currency-code">
+              <span class="flag">🇰🇪</span>
+              <div><strong>KES</strong><small>Kenyan Shilling</small></div>
+            </div>
+            <input id="kesAmount" type="number" min="1" step="1" inputmode="numeric"
+              placeholder="Enter amount" aria-label="Amount in Kenyan shillings"
+              autocomplete="off" disabled>
+          </div>
+
+          <div class="swap-line"><span>Estimated conversion</span></div>
+
+          <label class="field-label" for="kwdAmount">
+            <span>Exchange estimate</span><span>Kuwaiti dinars</span>
+          </label>
+          <div class="currency-field" style="background:#fbfcfd">
+            <div class="currency-code">
+              <span class="flag">🇰🇼</span>
+              <div><strong>KWD</strong><small>Kuwaiti Dinar</small></div>
+            </div>
+            <input id="kwdAmount" type="text" value="—" readonly aria-label="Estimated Kuwaiti dinars">
+          </div>
+
+          <div class="rate-line">
+            <span>Indicative exchange rate</span>
+            <span class="rate-value" id="rateText">Not available</span>
+          </div>
+
+          <div class="fee-box">
+            <div class="fee-row"><span>Amount to convert</span><strong id="convertKES">—</strong></div>
+            <div class="fee-row"><span>Combined transaction fee</span><strong id="feeKES">—</strong></div>
+            <div class="fee-row total"><span>Total you pay</span><strong id="totalKES">—</strong></div>
+          </div>
+
+          <div class="receive-box">
+            <div>
+              <span>Recipient gets (estimate)</span>
+              <small>Subject to the confirmed quote and payout process</small>
+            </div>
+            <div class="receive-amount" id="receiveKWD">KWD —</div>
+          </div>
+
+          <button class="primary-btn" id="proceedBtn" type="button" disabled>
+            Continue to payment →
+          </button>
+          <p class="fine-print" id="pricingMessage">
+            Connecting to the pricing database. No rate or fee has been assumed.
+          </p>
+          <p class="updated-at" id="updatedAt"></p>
+        </section>
+      </div>
+    </section>
+
+    <section class="container section" id="how-it-works">
+      <div class="section-kicker">Straightforward by design</div>
+      <h2>Three simple steps</h2>
+      <p class="section-intro">
+        Review the estimate, authorize your payment through the official payment
+        flow when enabled, and follow the transaction status.
+      </p>
+      <div class="steps">
+        <article class="step">
+          <div class="step-number">01</div>
+          <h3>Calculate your exchange</h3>
+          <p>Enter the KES amount and review the active exchange rate, combined fee and estimated KWD payout.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">02</div>
+          <h3>Pay with M-Pesa</h3>
+          <p>When checkout is enabled, submit your details and authorize the STK Push on your phone.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">03</div>
+          <h3>Track your transaction</h3>
+          <p>Payment and payout statuses must be updated by verified backend processes, not by this page alone.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="security-band" id="security">
+      <div class="container security-inner">
+        <div class="security-copy">
+          <strong>Designed around clarity and accountability.</strong>
+          <span>Live configuration, disclosed fees and traceable transaction processing.</span>
+        </div>
+        <div class="security-items">
+          <span><i class="check">✓</i> Fees shown upfront</span>
+          <span><i class="check">✓</i> Verified payment status</span>
+          <span><i class="check">✓</i> Recorded payout confirmation</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">GENEARA PAY</div>
+        <div class="footer-note">Kenya to Kuwait — simple, clear, accountable.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#security">Our approach</a>
+        <a id="supportLink" href="#security">Support</a>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> GENEARA PAY. Rates and fees are shown only when valid configuration is available.</div>
+  </footer>
+
+  <div class="modal-backdrop" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-top">
+        <div>
+          <h2 id="modalTitle">Your transfer details</h2>
+          <p>Review the details for your transfer request.</p>
+        </div>
+        <button class="close-btn" id="closeModal" type="button" aria-label="Close dialog">×</button>
+      </div>
+
+      <form id="transferForm">
+        <div class="form-group">
+          <label for="mpesaPhone">Kenyan M-Pesa phone number</label>
+          <input id="mpesaPhone" name="mpesaPhone" type="tel" autocomplete="tel"
+            placeholder="+254 7XX XXX XXX" required
+            pattern="(\+?254|0)?[17][0-9]{8}"
+            title="Enter a valid Kenyan mobile number, e.g. 0712345678">
+        </div>
+
+        <div class="form-group">
+          <label for="wamdPhone">Kuwait WAMD-linked phone number</label>
+          <input id="wamdPhone" name="wamdPhone" type="tel" autocomplete="tel"
+            placeholder="+965 XXXX XXXX" required
+            pattern="(\+?965)?[0-9]{8}"
+            title="Enter an 8-digit Kuwait number, with or without +965">
+        </div>
+
+        <div class="form-group">
+          <label for="recipientName">Recipient name (if required)</label>
+          <input id="recipientName" name="recipientName" type="text"
+            maxlength="100" autocomplete="name" placeholder="Full name">
+        </div>
+
+        <div class="quote-summary">
+          <div><span>Amount to convert</span><strong id="modalKES">—</strong></div>
+          <div><span>Combined fee</span><strong id="modalFee">—</strong></div>
+          <div><span>Total payment</span><strong id="modalTotal">—</strong></div>
+          <div><span>Estimated KWD payout</span><strong id="modalKWD">—</strong></div>
+        </div>
+
+        <div class="notice" id="checkoutNotice">
+          Checkout is not enabled until the secure backend payment function is configured.
+          No payment will be initiated from this page.
+        </div>
+
+        <button class="primary-btn" type="submit" id="submitTransfer" disabled>
+          Payment setup required
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+
+    /*
+     * GENEARA PAY CONFIGURATION
+     *
+     * Replace these placeholders with:
+     * Supabase Dashboard → Project Settings → API
+     *
+     * Use only your project URL and publishable/anon key here.
+     * NEVER use a service-role key, Daraja secret or private API key in frontend code.
+     */
+    const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+    const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+
+    /*
+     * Optional: set a real support email after it is configured.
+     * Leave blank to keep the Support link on the page.
+     */
+    const SUPPORT_EMAIL = "";
+
+    /*
+     * Required database contract:
+     *
+     * exchange_rates:
+     *   base_currency = 'KES'
+     *   quote_currency = 'KWD'
+     *   is_active = true
+     *   rate OR exchange_rate = KES per 1 KWD
+     *   updated_at
+     *
+     * fee_settings:
+     *   is_active = true
+     *   platform_fee_model OR fee_type = 'fixed' or 'percentage'
+     *   platform_fee_value OR fee_value = fixed KES amount or percentage
+     *   safaricom_fee_kes = KES fee included in the combined fee
+     *
+     * transfer_settings:
+     *   is_active = true
+     *   minimum_amount_kes
+     *   maximum_amount_kes
+     *
+     * If your current schema uses different names, align the queries below
+     * with the actual schema rather than inserting made-up financial values.
+     */
+
+    const $ = (id) => document.getElementById(id);
+
+    let supabaseClient = null;
+    let pricing = null;
+    let loadingPricing = false;
+    let toastTimer = null;
+
+    const kesFmt = (n) => "KES " + Number(n).toLocaleString("en-KE", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    const kwdFmt = (n) => "KWD " + Number(n).toLocaleString("en-KW", {
+      minimumFractionDigits: 3,
+      maximumFractionDigits: 3
+    });
+
+    function showToast(message) {
+      const toast = $("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 4500);
+    }
+
+    function setPricingStatus(message, type = "loading") {
+      const pill = $("pricingStatus");
+      pill.textContent =
+        type === "ready" ? "PRICING LOADED" :
+        type === "error" ? "UNAVAILABLE" :
+        "LOADING";
+
+      pill.classList.toggle("ready", type === "ready");
+      pill.classList.toggle("error", type === "error");
+      $("pricingMessage").textContent = message;
+    }
+
+    function disableCheckout(message) {
+      $("proceedBtn").disabled = true;
+      $("submitTransfer").disabled = true;
+      $("submitTransfer").textContent = "Payment setup required";
+      $("checkoutNotice").textContent = message;
+    }
+
+    function setUnavailable(message) {
+      pricing = null;
+      $("kesAmount").disabled = true;
+      $("kwdAmount").value = "—";
+      $("rateText").textContent = "Not available";
+      $("convertKES").textContent = "—";
+      $("feeKES").textContent = "—";
+      $("totalKES").textContent = "—";
+      $("receiveKWD").textContent = "KWD —";
+      $("updatedAt").textContent = "";
+      $("proceedBtn").disabled = true;
+      setPricingStatus(message, "error");
+      disableCheckout("Live pricing is unavailable. Checkout cannot proceed.");
+    }
+
+    function getFeeModel(row) {
+      return String(
+        row.platform_fee_model ??
+        row.fee_model ??
+        row.fee_type ??
+        ""
+      ).trim().toLowerCase();
+    }
+
+    function getFeeValue(row) {
+      const value =
+        row.platform_fee_value ??
+        row.fee_value ??
+        row.platform_fee;
+
+      return value === null || value === undefined || value === ""
+        ? NaN
+        : Number(value);
+    }
+
+    function getRateValue(row) {
+      const value = row.rate ?? row.exchange_rate;
+      return value === null || value === undefined || value === ""
+        ? NaN
+        : Number(value);
+    }
+
+    async function fetchActivePricing() {
+      if (loadingPricing) return;
+      loadingPricing = true;
+      setPricingStatus("Connecting to database…");
+
+      try {
+        if (!supabaseClient) {
+          throw new Error("Add your Supabase project URL and publishable key in the script.");
+        }
+
+        const [rateResponse, feeResponse, limitsResponse] = await Promise.all([
+          supabaseClient
+            .from("exchange_rates")
+            .select("*")
+            .eq("base_currency", "KES")
+            .eq("quote_currency", "KWD")
+            .eq("is_active", true)
+            .order("updated_at", { ascending: false })
+            .limit(1)
+            .maybeSingle(),
+
+          supabaseClient
+            .from("fee_settings")
+            .select("*")
+            .eq("is_active", true)
+            .limit(1)
+            .maybeSingle(),
+
+          supabaseClient
+            .from("transfer_settings")
+            .select("*")
+            .eq("is_active", true)
+            .limit(1)
+            .maybeSingle()
+        ]);
+
+        if (rateResponse.error) throw rateResponse.error;
+        if (feeResponse.error) throw feeResponse.error;
+        if (limitsResponse.error) throw limitsResponse.error;
+
+        const rateRow = rateResponse.data;
+        const feeRow = feeResponse.data;
+        const limitsRow = limitsResponse.data;
+
+        if (!rateRow || !feeRow || !limitsRow) {
+          throw new Error("An active exchange rate, fee configuration, or transfer limit is missing.");
+        }
+
+        const rate = getRateValue(rateRow);
+        const feeModel = getFeeModel(feeRow);
+        const feeValue = getFeeValue(feeRow);
+
+        const rawSafaricomFee = feeRow.safaricom_fee_kes;
+        const safaricomFee = rawSafaricomFee === null ||
+          rawSafaricomFee === undefined || rawSafaricomFee === ""
+          ? NaN
+          : Number(rawSafaricomFee);
+
+        const minimum = Number(limitsRow.minimum_amount_kes);
+        const maximum = Number(limitsRow.maximum_amount_kes);
+
+        if (!Number.isFinite(rate) || rate <= 0) {
+          throw new Error("The active exchange rate is missing or invalid.");
+        }
+
+        if (!["fixed", "percentage", "fixed_kes", "percentage_kes"].includes(feeModel)) {
+          throw new Error("The active platform fee model must be fixed or percentage.");
+        }
+
+        if (!Number.isFinite(feeValue) || feeValue < 0) {
+          throw new Error("The active platform fee value is missing or invalid.");
+        }
+
+        if (!Number.isFinite(safaricomFee) || safaricomFee < 0) {
+          throw new Error("The Safaricom fee configuration is missing or invalid.");
+        }
+
+        if (!Number.isFinite(minimum) || minimum <= 0 ||
+            !Number.isFinite(maximum) || maximum < minimum) {
+          throw new Error("Transfer limits are missing or invalid.");
+        }
+
+        pricing = {
+          rate,
+          feeModel,
+          feeValue,
+          safaricomFee,
+          minimum,
+          maximum,
+          updatedAt: rateRow.updated_at || null
+        };
+
+        $("kesAmount").min = String(minimum);
+        $("kesAmount").max = String(maximum);
+        $("kesAmount").disabled = false;
+
+        setPricingStatus("Live configuration loaded from Supabase.", "ready");
+
+        $("updatedAt").textContent = pricing.updatedAt
+          ? "Rate last updated: " + new Date(pricing.updatedAt).toLocaleString()
+          : "Rate update time not provided by database.";
+
+        updateCalculator();
+      } catch (error) {
+        console.error("GENEARA PAY pricing error:", error);
+        setUnavailable(
+          "Pricing could not be loaded. Check Supabase configuration and active database settings."
+        );
+      } finally {
+        loadingPricing = false;
+      }
+    }
+
+    function calculatePlatformFee(amount) {
+      if (!pricing) return NaN;
+
+      if (pricing.feeModel === "fixed" || pricing.feeModel === "fixed_kes") {
+        return pricing.feeValue;
+      }
+
+      return amount * pricing.feeValue / 100;
+    }
+
+    function currentQuote() {
+      if (!pricing) return { valid: false };
+
+      const rawAmount = $("kesAmount").value.trim();
+      if (!rawAmount) return { valid: false };
+
+      const amount = Number(rawAmount);
+
+      if (!Number.isFinite(amount) ||
+          amount < pricing.minimum ||
+          amount > pricing.maximum) {
+        return { valid: false, amount };
+      }
+
+      const platformFee = calculatePlatformFee(amount);
+      const fee = platformFee + pricing.safaricomFee;
+      const total = amount + fee;
+      const payout = amount / pricing.rate;
+
+      if (![platformFee, fee, total, payout].every(Number.isFinite)) {
+        return { valid: false, amount };
+      }
+
+      return {
+        valid: true,
+        amount,
+        platformFee,
+        safaricomFee: pricing.safaricomFee,
+        fee,
+        total,
+        payout
+      };
+    }
+
+    function updateCalculator() {
+      const button = $("proceedBtn");
+
+      if (!pricing) {
+        button.disabled = true;
+        return;
+      }
+
+      const q = currentQuote();
+
+      $("rateText").textContent = "1 KWD = " + kesFmt(pricing.rate);
+
+      if (!q.valid) {
+        $("kwdAmount").value = "—";
+        $("convertKES").textContent = "—";
+        $("feeKES").textContent = "—";
+        $("totalKES").textContent = "—";
+        $("receiveKWD").textContent = "KWD —";
+        button.disabled = true;
+
+        const value = $("kesAmount").value.trim();
+        $("pricingMessage").textContent = value
+          ? `Enter an amount from ${kesFmt(pricing.minimum)} to ${kesFmt(pricing.maximum)}.`
+          : `Enter an amount from ${kesFmt(pricing.minimum)} to ${kesFmt(pricing.maximum)} to calculate your estimate.`;
+
+        return;
+      }
+
+      $("kwdAmount").value = q.payout.toLocaleString("en-KW", {
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3
+      });
+
+      $("convertKES").textContent = kesFmt(q.amount);
+      $("feeKES").textContent = kesFmt(q.fee);
+      $("totalKES").textContent = kesFmt(q.total);
+      $("receiveKWD").textContent = kwdFmt(q.payout);
+      $("pricingMessage").textContent =
+        "Estimate only. The backend must validate the final quote before payment.";
+
+      button.disabled = false;
+    }
+
+    function openCheckout() {
+      const q = currentQuote();
+
+      if (!q.valid) {
+        showToast("Enter a valid amount using the current transfer limits.");
+        return;
+      }
+
+      $("modalKES").textContent = kesFmt(q.amount);
+      $("modalFee").textContent = kesFmt(q.fee);
+      $("modalTotal").textContent = kesFmt(q.total);
+      $("modalKWD").textContent = kwdFmt(q.payout);
+
+      $("checkoutModal").classList.add("open");
+      $("mpesaPhone").focus();
+    }
+
+    function closeCheckout() {
+      $("checkoutModal").classList.remove("open");
+    }
+
+    $("kesAmount").addEventListener("input", updateCalculator);
+    $("proceedBtn").addEventListener("click", openCheckout);
+    $("closeModal").addEventListener("click", closeCheckout);
+
+    $("checkoutModal").addEventListener("click", (event) => {
+      if (event.target === $("checkoutModal")) closeCheckout();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeCheckout();
+    });
+
+    $("transferForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!event.currentTarget.reportValidity()) return;
+
+      /*
+       * Deliberately fail closed.
+       * Replace this section only after the authenticated server-side
+       * quote/transaction/STK Edge Function has been deployed and tested.
+       *
+       * Never initiate a live transfer directly from browser-only code.
+       */
+      showToast("Checkout is not enabled yet. The secure payment backend must be connected first.");
+    });
+
+    $("year").textContent = new Date().getFullYear();
+
+    if (SUPPORT_EMAIL.trim()) {
+      $("supportLink").href = "mailto:" + SUPPORT_EMAIL.trim();
+    }
+
+    const hasSupabaseConfig =
+      SUPABASE_URL.startsWith("https://") &&
+      !SUPABASE_URL.includes("YOUR_") &&
+      SUPABASE_PUBLISHABLE_KEY.length > 20 &&
+      !SUPABASE_PUBLISHABLE_KEY.includes("YOUR_");
+
+    if (hasSupabaseConfig && window.supabase) {
+      supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+      fetchActivePricing();
+    } else {
+      setUnavailable("Set your Supabase project URL and publishable key to load live pricing.");
+    }
+  </script>
+</body>
+</html>
