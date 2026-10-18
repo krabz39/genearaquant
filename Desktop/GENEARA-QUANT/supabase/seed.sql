@@ -1,0 +1,2 @@
+-- Intentionally empty. GENEARA QUANT must not prefill mock accounts, balances,
+-- strategies, signals, risk limits, or trades.

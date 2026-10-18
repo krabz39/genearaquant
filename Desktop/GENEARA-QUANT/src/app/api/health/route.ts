@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server';
+export async function GET(){const configured=Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL&&process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY&&process.env.DERIV_CLIENT_ID&&process.env.DERIV_REDIRECT_URI);return NextResponse.json({status:'ok',application:'GENEARA QUANT',configuration:configured?'partially_configured':'missing_required_configuration',trading_enabled:false},{headers:{'cache-control':'no-store'}});}

@@ -1,0 +1,4 @@
+import { NextResponse } from 'next/server';
+import { createSupabaseServerClient } from '@/lib/supabase/server';
+export async function GET(){const s=await createSupabaseServerClient();const {data:{user}}=await s.auth.getUser();if(!user)return NextResponse.json({error:'unauthorized'},{status:401});const {data,error}=await s.from('gq_trade_intents').select('id,account_id,strategy_id,status,contract_type,market_symbol,stake,duration_ticks,proposal_id,contract_id,block_reason,created_at,updated_at').eq('user_id',user.id).order('created_at',{ascending:false}).limit(100);if(error)return NextResponse.json({error:'query_failed'},{status:500});return NextResponse.json({trades:data??[],execution_enabled:false});}
+export async function POST(){return NextResponse.json({error:'trading_locked',message:'Order execution is disabled pending production readiness approval.'},{status:423});}

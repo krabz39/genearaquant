@@ -1,0 +1,3 @@
+import {requireUserOrRedirect} from '@/lib/auth';
+import Link from 'next/link';
+export default async function Trading(){await requireUserOrRedirect();return <main className="shell"><Link href="/dashboard" className="back">← Workspace</Link><h1>Execution controls</h1><div className="warning">ORDER EXECUTION LOCKED</div><p className="muted">This release cannot place trades. No demo orders are generated. Execution remains unavailable until proposal validation, risk enforcement, idempotent order handling, settlement reconciliation and independent testing are complete.</p><Link className="secondary" href="/risk-manager">Review risk controls</Link></main>}

@@ -1,0 +1,2 @@
+import test from 'node:test'; import assert from 'node:assert/strict'; import { canExecuteOrder } from '../src/safety.js';
+test('execution stays disabled regardless of environment flag',()=>{const old=process.env.LIVE_TRADING_ENABLED;process.env.LIVE_TRADING_ENABLED='true';assert.equal(canExecuteOrder(),false);if(old===undefined)delete process.env.LIVE_TRADING_ENABLED;else process.env.LIVE_TRADING_ENABLED=old;});
