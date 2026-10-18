@@ -1,19 +1,24 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { createBrowserClient } from '@supabase/ssr';
+
+type AuthMode = 'signin' | 'signup';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
+  const [mode, setMode] = useState<AuthMode>('signin');
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
 
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
+  async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (busy) return;
+
     setBusy(true);
     setMessage('');
 
@@ -32,11 +37,11 @@ export default function Login() {
       const result =
         mode === 'signin'
           ? await supabase.auth.signInWithPassword({
-              email,
+              email: email.trim(),
               password,
             })
           : await supabase.auth.signUp({
-              email,
+              email: email.trim(),
               password,
               options: {
                 emailRedirectTo: `${window.location.origin}/dashboard`,
@@ -51,18 +56,26 @@ export default function Login() {
         setMessage(
           'Check your email to confirm your account, then sign in.',
         );
-      } else {
-        window.location.href = '/dashboard';
+        return;
       }
-    } catch (err) {
+
+      window.location.assign('/dashboard');
+    } catch (err: unknown) {
       setMessage(
         err instanceof Error
           ? err.message
-          : 'Authentication failed.',
+          : 'Authentication failed. Please try again.',
       );
     } finally {
       setBusy(false);
     }
+  }
+
+  function toggleMode() {
+    setMode((current) =>
+      current === 'signin' ? 'signup' : 'signin',
+    );
+    setMessage('');
   }
 
   return (
@@ -79,24 +92,30 @@ export default function Login() {
 
       <p>
         Use your GENEARA QUANT account. Deriv credentials are handled
-        separately by Deriv OAuth.
+        separately through Deriv OAuth.
       </p>
 
       <form onSubmit={submit}>
-        <label>
+        <label htmlFor="login-email">
           Email
           <input
+            id="login-email"
+            name="email"
             type="email"
             autoComplete="email"
             required
+            maxLength={254}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={busy}
           />
         </label>
 
-        <label>
+        <label htmlFor="login-password">
           Password
           <input
+            id="login-password"
+            name="password"
             type="password"
             autoComplete={
               mode === 'signin'
@@ -107,10 +126,15 @@ export default function Login() {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            disabled={busy}
           />
         </label>
 
-        <button className="primary" type="submit" disabled={busy}>
+        <button
+          className="primary"
+          type="submit"
+          disabled={busy}
+        >
           {busy
             ? 'Please wait…'
             : mode === 'signin'
@@ -120,7 +144,7 @@ export default function Login() {
       </form>
 
       {message && (
-        <p role="status" className="notice">
+        <p role="status" aria-live="polite" className="notice">
           {message}
         </p>
       )}
@@ -129,12 +153,7 @@ export default function Login() {
         type="button"
         className="textButton"
         disabled={busy}
-        onClick={() => {
-          setMode((current) =>
-            current === 'signin' ? 'signup' : 'signin',
-          );
-          setMessage('');
-        }}
+        onClick={toggleMode}
       >
         {mode === 'signin'
           ? 'Need an account? Sign up'

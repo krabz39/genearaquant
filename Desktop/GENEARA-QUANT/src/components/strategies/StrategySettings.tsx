@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -26,10 +27,16 @@ export default function StrategySettings() {
     ticksValue > 10000;
 
   return (
-    <section className="panel" aria-labelledby="entry-configuration-title">
+    <section
+      className="panel"
+      aria-labelledby="entry-configuration-title"
+    >
       <div className="panel-head">
         <div>
-          <h3 className="panel-title" id="entry-configuration-title">
+          <h3
+            className="panel-title"
+            id="entry-configuration-title"
+          >
             Entry configuration
           </h3>
 
@@ -43,7 +50,9 @@ export default function StrategySettings() {
 
       <div className="form-grid">
         <div className="field">
-          <label htmlFor="execution-policy">Execution policy</label>
+          <label htmlFor="execution-policy">
+            Execution policy
+          </label>
 
           <select
             id="execution-policy"
@@ -52,8 +61,12 @@ export default function StrategySettings() {
               setMode(event.target.value as ExecutionMode)
             }
           >
-            <option value="best">Best qualifying signal</option>
-            <option value="independent">Independent strategies</option>
+            <option value="best">
+              Best qualifying signal
+            </option>
+            <option value="independent">
+              Independent strategies
+            </option>
           </select>
 
           <span className="field-help">
@@ -72,7 +85,9 @@ export default function StrategySettings() {
             }
           >
             <option value="fixed">Fixed stake (default)</option>
-            <option value="calculated">Calculated stake (later phase)</option>
+            <option value="calculated">
+              Calculated stake (later phase)
+            </option>
           </select>
         </div>
 
@@ -90,7 +105,9 @@ export default function StrategySettings() {
             onChange={(event) => setStake(event.target.value)}
             inputMode="decimal"
             disabled={stakeMode !== 'fixed'}
-            aria-invalid={stakeMode === 'fixed' && invalidStake}
+            aria-invalid={
+              stakeMode === 'fixed' && invalidStake
+            }
           />
 
           {stakeMode === 'fixed' && invalidStake && (
@@ -100,13 +117,15 @@ export default function StrategySettings() {
           )}
 
           <span className="field-help">
-            Stake limits must be checked against Deriv proposal data and
-            server-enforced risk settings before execution.
+            Stake limits must be checked against Deriv proposal data
+            and server-enforced risk settings before execution.
           </span>
         </div>
 
         <div className="field">
-          <label htmlFor="entry-duration">Entry duration (ticks)</label>
+          <label htmlFor="entry-duration">
+            Entry duration (ticks)
+          </label>
 
           <input
             id="entry-duration"
@@ -127,14 +146,16 @@ export default function StrategySettings() {
           )}
 
           <span className="field-help">
-            Valid duration depends on the selected contract type and market.
+            Valid duration depends on the selected contract type
+            and market.
           </span>
         </div>
       </div>
 
       <div className="callout" style={{ marginTop: 17 }}>
-        These values exist only in this browser component. They are not
-        persisted to the database, and live order execution is not enabled.
+        These values exist only in this browser component. They are
+        not persisted to the database, and live order execution is
+        not enabled.
       </div>
 
       <div className="tiny muted" style={{ marginTop: 10 }}>
